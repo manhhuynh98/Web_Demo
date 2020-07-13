@@ -1,0 +1,38 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+}
+.navbar{
+    background-color: cornflowerblue !important;
+    opacity: 0.8;
+}
+.navbar li a:hover{
+    color: white !important;
+}
+.imgs{
+    width: 100%;
+}
+#menu{
+    background-color: white !important;
+    color: black;
+}
+#menu li{
+    margin: 0 10px !important;
+}
+#menu li a:hover{
+    color: blueviolet !important;
+}
+.dropdown:hover>.dropdown-menu{
+    display: block;
+}
+.carousel a{
+    color: #32323d;
+}
+.carousel a:hover{
+    color: cornflowerblue;
+}
+.social a{
+    font-size: 3em;
+    padding: 4rem;
+}
