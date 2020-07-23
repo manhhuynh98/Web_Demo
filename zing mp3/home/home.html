@@ -1,3 +1,33 @@
+<?php
+  $img = "";
+  $name = "";
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "test";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  $sql = "SELECT * FROM `album1`";
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        global $img,$name;
+      $img = $row["img"];
+      $name = $row["name"];
+    }
+  } else {
+    echo "0 results";
+  }
+  $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +40,7 @@
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">   
     <link rel="stylesheet" href="home.css"> 
     <title>Zing Mp3</title>
+    <link rel="stylesheet" href="mysql.php">
 </head>
 <body>
 <!-- header -->
@@ -224,9 +255,9 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-4">
                         <div class="card">
-                            <img class="card-img-top" src="https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/8/9/6/4/89642a3eabe1abfa29b3a97e22b78e4d.jpg" alt="" >
+                            <img class="card-img-top" src=<?php echo "$img";?> alt="" >
                         </div>
-                        <a href="#"  class="card-link">Vpop ngày nay</a>
+                        <a href="#"  class="card-link"><?php echo $name;?></a>
                     </div>
                     <div class="col-lg-3 col-md-4">
                         <div class="card">
@@ -308,3 +339,4 @@
 </footer>
 </body>
 </html>
+
